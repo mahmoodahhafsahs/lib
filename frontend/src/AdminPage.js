@@ -20,7 +20,7 @@ function AdminPage() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        axios.post('http://localhost:8081/addBook', books)
+        axios.post('https://lib-2.onrender.com/addBook', books)
             .then((response) => {
                 console.log(response.data);
                 setBookList((prevBooks) => [...prevBooks, response.data]);
@@ -38,7 +38,7 @@ function AdminPage() {
     };
 
     const handleRemove = (bookId) => {
-        axios.post('http://localhost:8081/removeBook', { id: bookId })
+        axios.post('https://lib-2.onrender.com/removeBook', { id: bookId })
             .then((response) => {
                 if (response.data.success) {
                     setBookList((prevBooks) => prevBooks.filter((book) => book.id !== bookId));
@@ -52,7 +52,7 @@ function AdminPage() {
     };
 
     useEffect(() => {
-        axios.get('http://localhost:8081/getBooks')
+        axios.get('https://lib-2.onrender.com/getBooks')
             .then((response) => {
                 setBookList(response.data);
             })
